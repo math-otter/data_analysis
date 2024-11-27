@@ -1,8 +1,8 @@
 from datetime import datetime, timedelta
 
 # 매크로 로그 생성 함수
-def generate_log_macro(n=1000, start_time = datetime.now()): # 기본값: (현재 시점) 뒤의 (1000)개의 시점을 기록
-    time_points = range(1, n + 1)  # 시점 리스트
+def generate_log_macro(n=1000, start_time=datetime.now()): # 기본값: (현재 시점) 포함 (1000)개의 시점을 기록
+    time_points = range(0, n)  # 시점 리스트
     log_data = []  # 로그 기록용 리스트
     last_used = {'A': -999, 'B': -999, 'C': -999}  # 각 스킬의 마지막 사용 시간 체크
     cooldown = {'A': 5, 'B': 25, 'C': 70}  # 각 스킬의 쿨다운 시간 체크
@@ -19,7 +19,8 @@ def generate_log_macro(n=1000, start_time = datetime.now()): # 기본값: (현�
     
     return log_data
 
-logs = generate_log_macro()
+# 로그 파일 저장
+logs = generate_log_macro(600) 
 with open('logs.txt', 'w') as file:
     for log in logs:
         file.write(log + '\n')
