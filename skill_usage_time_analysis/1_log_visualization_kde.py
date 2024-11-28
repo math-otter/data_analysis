@@ -1,9 +1,17 @@
 import numpy as np
 from scipy.stats import norm
 import matplotlib.pyplot as plt
-
 import pandas as pd
-df = pd.read_csv('skill_usage_time.csv')
+from log_generator import macro
+from log_to_csv import log_to_csv
+
+log_file_name = '000001_skill_usage_log.txt'
+csv_file_name = '000001_skill_usage_time.csv'
+
+macro(log_file_name)
+log_to_csv(log_file_name, csv_file_name)
+
+df = pd.read_csv('000001_skill_usage_time.csv')
 
 positions = df.index
 range = np.linspace(min(positions), max(positions), 1000)
