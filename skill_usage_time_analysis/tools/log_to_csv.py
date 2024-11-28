@@ -19,7 +19,7 @@ def log_to_csv(log_file, csv_file):
     df['time'] = logs_time # 시점 열
     df['action'] = logs_action # 행위 열
 
-    skills = ['A', 'B', 'C']
+    skills = ['A', 'B', 'C', 'D']
     for skill in skills:
         df[f'{skill}_used'] = df['action'].str.contains(skill) # 매 시점에서 스킬 사용 여부 체크
     df = df.drop('action', axis=1).groupby('time').sum() # 각 스킬 사용 횟수를 초 단위로 집계
