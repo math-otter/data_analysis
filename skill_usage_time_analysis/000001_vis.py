@@ -12,6 +12,7 @@ df2 = smoothed(df1, bandwidth=0.5) # 연속 시계열
 print(df1)
 print('-' * 100)
 print(df2)
+print('-' * 100)
 
 # 시각화
 import matplotlib.pyplot as plt
