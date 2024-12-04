@@ -13,10 +13,3 @@ print(df1)
 print('-' * 100)
 print(df2)
 print('-' * 100)
-
-
-arr = np.arange(5)
-print(arr)
-print('-' * 100)
-fft_result = np.fft.fft(np.arange(5))
-print(fft_result)
