@@ -3,7 +3,7 @@ from tools.log_analyzer import *
 
 # 유저 아이디와 플레이 로그
 user_id = '000001'
-logs = log_macro(600)
+logs = log_macro(600*3)
 write_log(logs, r'data/{}.txt'.format(user_id))
 
 # 초 단위 시계열 생성

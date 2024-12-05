@@ -54,9 +54,9 @@ def kde(positions, range, values, bandwidth=0.5):
     return density
 
 # 이산 시계열을 부드럽게 변환하는 함수 (커널 밀도를 이용하여 연속 시계열 생성)
-def smoothed(df=pd.DataFrame(), bandwidth=0.5):
+def smoothed(df=pd.DataFrame(), bandwidth=0.5, n=10):
     time_points = df.reset_index(drop=True).index.values
-    time_range = np.linspace(min(time_points), max(time_points), 1000)
+    time_range = np.linspace(min(time_points), max(time_points), n*len(df))
     series = {}
     columns_to_exclude = ['time', 'time points']
     valid_columns = [col for col in df.columns if col not in columns_to_exclude]
