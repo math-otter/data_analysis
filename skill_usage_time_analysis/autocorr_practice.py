@@ -18,5 +18,6 @@ def autocorrelation_fft(x):
     # 신호 길이에 맞게 슬라이싱
     autocorr = autocorr[:n]
     # 정규화 (R[0] = 에너지)
+    # 정규화 반드시 필요
     autocorr /= autocorr[0]
     return autocorr
