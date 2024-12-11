@@ -23,3 +23,14 @@ lags, autocorr = autocorrelation_discrete(x)
 # 결과 출력
 print("Lags (τ):", lags)
 print("Autocorrelation R_xx(τ):", autocorr)
+
+import matplotlib.pyplot as plt
+
+# 시각화
+plt.figure(figsize=(8, 5))
+plt.stem(lags, autocorr, use_line_collection=True)
+plt.title("Autocorrelation Function $R_{xx}(\\tau)$")
+plt.xlabel("Lag $\\tau$")
+plt.ylabel("$R_{xx}(\\tau)$")
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.show()
