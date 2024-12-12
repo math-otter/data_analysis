@@ -46,7 +46,7 @@ class LogData:
 
 ###################################################################################################################
 
-# 커널 밀도 계산 함수
+# 커널 밀도 함수
 def kde(positions, range, values, bandwidth=0.5):
     density = np.zeros_like(range)
     for position, value in zip(positions, values):
@@ -66,3 +66,8 @@ def smoothed(df=pd.DataFrame(), bandwidth=0.5, n=10):
     df = pd.DataFrame(series)
     df.insert(0, 'time range', time_range)
     return df
+
+# 자기상관함수
+def autocorr(x):
+    n = len(x)
+    return [np.sum(x[:n - tau] * x[tau:]) for tau in range(n)]
