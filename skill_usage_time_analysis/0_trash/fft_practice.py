@@ -11,7 +11,7 @@ analysis = np.fft.fft(f)
 print(f'C(n): {analysis}\n'+'-'*100)
 
 # f(x)=Sum[C(n)u(x;n)]: 합성식, 푸리에 급수, 이산 푸리에 역변환(IDFT)
-synthesis = np.fft.ifft(analysis) 
+synthesis = np.fft.ifft(analysis)
 print(f'f(x)=Sum[C(n)u(x;n)]: {synthesis}\n'+'-'*100)
 
 # 시각화
@@ -22,7 +22,7 @@ ax[0].plot(x, f)
 ax[0].set_yticks([min(f), max(f)])
 
 magnitude = np.abs(analysis)
-ax[1].plot(x, magnitude)
+ax[1].plot(x / p, magnitude)
 ax[1].set_yticks([min(magnitude), max(magnitude)])
 
 ax[2].plot(x, synthesis)
