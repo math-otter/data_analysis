@@ -22,15 +22,15 @@ magnitude = np.abs(analysis) # 푸리에 계수의 크기
 # 시각화
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots(2, 1, figsize=(10, 4))
-time_range = df2['time range']
 
-ax[0].plot(time_range, f)
+time_points = df2.index
+ax[0].plot(time_points, f)
 ax[0].set_yticks([min(f), max(f)])
 
-effective = time_range < 10
-time_range = time_range[effective]
+effective = time_points < 100
+time_points = time_points[effective]
 magnitude = magnitude[effective]
-ax[1].plot(time_range, magnitude)
+ax[1].plot(time_points / len(f), magnitude)
 ax[1].set_yticks([min(magnitude), max(magnitude)])
 
 plt.show()
