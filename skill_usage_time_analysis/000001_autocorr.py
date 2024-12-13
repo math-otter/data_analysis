@@ -14,18 +14,23 @@ print('-' * 100)
 print(df2)
 print('-' * 100)
 
-# 자기상관함수 계산 및 시각화
+# PSD 계산 및 시각화
 import matplotlib.pyplot as plt
 
-action = 'B used'
-x = df1[action]
-t = df1['time points']
+action = 'B used' # 분석 하려는 행위
 
-r = autocorr(x)
-tau = range(len(x))
+x = df2[action] # 신호 x(t)
+t = df2['time range'] # 시간 t
 
-fig, ax = plt.subplots(2, 1)
+r = autocorr(x) # 자기상관함수 r(tau)
+tau = range(len(x)) # 시차 tau
+
+s = np.abs(np.fft.fft(r)) # 파워 스펙트럼 밀도 s(f) = F[r(tau)]
+f = df2.index / len(x) # 주파수 f = t/p
+
+fig, ax = plt.subplots(3, 1)
 ax[0].plot(t, x)
 ax[1].plot(tau, r)
+ax[2].plot(f, s)
 
 plt.show()
