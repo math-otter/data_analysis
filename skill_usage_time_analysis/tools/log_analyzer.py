@@ -69,5 +69,5 @@ def smoothed(df=pd.DataFrame(), bandwidth=0.5, n=10):
 
 # 자기상관함수
 def autocorr(x):
-    n = len(x)
-    return [np.sum(x[:n - tau] * x[tau:]) for tau in range(n)]
+    N = len(x)
+    return [np.sum(x[:N - tau] * x[tau:]) for tau in range(N)]
