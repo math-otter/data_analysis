@@ -17,20 +17,18 @@ print('-' * 100)
 # PSD 계산 및 시각화
 import matplotlib.pyplot as plt
 
-action = 'B used' # 분석 하려는 행위
+action = 'No action' # 분석 하려는 행위
 
-x = df2[action] # 신호 x(t)
-t = df2['time range'] # 시간 t
-
-r = autocorr(x) # 자기상관함수 r(tau)
-tau = range(len(x)) # 시차 tau
-
-s = np.abs(np.fft.fft(r)) # 파워 스펙트럼 밀도 s(f) = F[r(tau)]
-f = df2.index / len(x) # 주파수 f = t/p
+index = df2.index # 인덱스: 0, 1, ..., N-1
+x = df2[action] # 신호
+r = autocorr(x) # 자기상관함수
+s = np.fft.fft(r) # 파워 스펙트럼 밀도(PSD)
 
 fig, ax = plt.subplots(3, 1)
-ax[0].plot(t, x)
-ax[1].plot(tau, r)
-ax[2].plot(f, s)
 
+ax[0].plot(index, x) # 신호 그래프
+ax[1].plot(index, r) # 자기상관함수 그래프
+ax[2].plot(index, np.abs(s)) # PSD 그래프
+
+plt.tight_layout()
 plt.show()
